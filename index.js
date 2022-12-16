@@ -1,38 +1,66 @@
 const inquirer = require('inquirer');
 
+class Engineer extends Employee {
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
+}
+
+class Intern extends Employee {
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
+}
+
+class Employee {
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
+}
+
+class Manager {
+    constructor(name, id, email, officeNumber) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.officeNumber = officeNumber;
+    }
+}
+
 const promptUser = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'manager name',
+            name: 'name',
             message: 'What is the team managers name?',
         },
         {
             type: 'input',
-            name: 'manager name',
-            message: 'What is the team managers name?',
-        },
-        {
-            type: 'input',
-            name: 'manager id',
+            name: 'id',
             message: 'What is the team managers ID?',
         },
         {
             type: 'input',
-            name: 'manager name',
+            name: 'email',
             message: 'What is the team managers email?',
         },
         {
             type: 'input',
-            name: 'manager name',
+            name: 'officeNumber',
             message: 'What is the team managers office number?',
         },
         {
             type: 'list',
-            name: 'license',
-            message: 'What license do you need for your project?',
+            name: 'add members',
+            message: 'Which type of team member would you like to add?',
             choices:
-                ["MIT", "APACHE", "GNU GPL", "BSD", "None"]
+                ["Engineer", "Intern", "I don't want to add any more team members"]
         },
     ]);
 };
