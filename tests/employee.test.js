@@ -1,6 +1,6 @@
 const Employee = require('../src/Employee')
 
-describe('Employoee', () => {
+describe('Employee', () => {
     it('should create employee object that takes name, id, email', () => {
         const object = {
             name: "jake",
@@ -10,12 +10,6 @@ describe('Employoee', () => {
 
         const person = new Employee("jake", 1, "jcvanduyn@yahoo.com");
         expect(object).toEqual(person);
-    }):
-
-    it('should throw an error if no input received', () => {
-        const cb = () => new Employee();
-        const err = new Error("You must input a name, id, and email for the employee")
-        expect(cb).toThrowError(err);
     });
 
     it('should return employee name', () => {
@@ -40,5 +34,11 @@ describe('Employoee', () => {
         const role = "Employee";
         const person = new Employee("jake", 1, "jcvanduyn@yahoo.com")
         expect(role).toEqual(person.getRole());
+    });
+
+    it('should throw an error if no input received', () => {
+        const cb = () => new Employee();
+        const err = new Error("You must input a name, id, and email for the employee")
+        expect(cb).toThrowError(err);
     });
 });
