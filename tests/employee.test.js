@@ -1,15 +1,11 @@
-const Employee = require('../src/Employee')
+const Employee = require('../lib/Employee')
 
 describe('Employee', () => {
     it('should create employee object that takes name, id, email', () => {
-        const object = {
-            name: "jake",
-            id: 1,
-            email: "jcvanduyn@yahoo.com"
-        };
 
         const person = new Employee("jake", 1, "jcvanduyn@yahoo.com");
-        expect(object).toEqual(person);
+
+        expect(typeof person).toEqual('object');
     });
 
     it('should return employee name', () => {
@@ -19,7 +15,7 @@ describe('Employee', () => {
     });
 
     it('should return employee id', () => {
-        const id = "1";
+        const id = 1;
         const person = new Employee("jake", 1, "jcvanduyn@yahoo.com")
         expect(id).toEqual(person.getId());
     });
