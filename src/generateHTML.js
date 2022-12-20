@@ -1,7 +1,6 @@
 const Manager = require('../lib/Manager')
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
-const members = require('../index')
 const fs = require('fs');
 
 function filterTeam(members) {
@@ -9,13 +8,16 @@ function filterTeam(members) {
     // create a function that returns the manager card
     members.forEach(element => {
         if (element.getRole() === "Manger") {
-            teamArray.push(returnManager(element));
+            const manager = returnManager(element)
+            teamArray.push(manager);
         }
         else if (element.getRole() === "Engineer") {
-            teamArray.push(returnEngineer(element));
+            const engineer = returnEngineer(element)
+            teamArray.push(engineer);
         }
-        else {
-            teamArray.push(returnIntern(element));
+        else if (element.getRole() === "Intern") {
+            const intern = returnIntern(element)
+            teamArray.push(intern);
         }
         return teamArray;
     });
@@ -66,13 +68,14 @@ function filterTeam(members) {
     <li class="list-group-item">Office Number: ${Engineer.getGitHub()}</li>
   </ul>
   </div>
-</div>
-            `
+</div>`
     }
+    console.log(teamArray)
     return teamArray;
 }
 
-module.exports = (teamArray) => {
+module.exports = (members) => {
+    console.log(filterTeam(members).toString());
     return `
 <!doctype html>
 <html lang="en">
@@ -91,7 +94,7 @@ module.exports = (teamArray) => {
     </header>
     <main>
         <div id="card-container">
-        ${filterTeam(members).stringify()}
+        ${filterTeam(members).toString()}
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

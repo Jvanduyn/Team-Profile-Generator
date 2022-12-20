@@ -129,8 +129,6 @@ function addIntern() {
 
 function writeFile() {
     // take the answer array and send the data to the template literal file
-    fs.writeFileSync('./dist/index.html', generateHTML(members))
+    fs.writeFileSync('./dist/index1.html', generateHTML(members))
 }
-
-module.exports = members;
 init()
