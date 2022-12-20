@@ -3,6 +3,7 @@ const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern')
 const generateHTML = require('./src/generateHTML')
+const fs = require('fs');
 
 const members = []
 
@@ -14,7 +15,7 @@ const init = () => {
             message: 'What is the team managers name?',
         },
         {
-            type: 'input',
+            type: 'number',
             name: 'id',
             message: 'What is the team managers ID?',
         },
@@ -24,7 +25,7 @@ const init = () => {
             message: 'What is the team managers email?',
         },
         {
-            type: 'input',
+            type: 'number',
             name: 'officeNumber',
             message: 'What is the team managers office number?',
         },
@@ -33,6 +34,7 @@ const init = () => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         // store object in the members array
         members.push(manager)
+
         // need to execute menu function
         menu()
     })
@@ -69,7 +71,7 @@ function addEngineer() {
             message: 'What is the engineers name?',
         },
         {
-            type: 'input',
+            type: 'number',
             name: 'id',
             message: 'What is the engineers ID?',
         },
@@ -101,7 +103,7 @@ function addIntern() {
             message: 'What is the interns name?',
         },
         {
-            type: 'input',
+            type: 'number',
             name: 'id',
             message: 'What is the interns ID?',
         },
@@ -130,5 +132,5 @@ function writeFile() {
     fs.writeFileSync('./dist/index.html', generateHTML(members))
 }
 
-
+module.exports = members;
 init()
