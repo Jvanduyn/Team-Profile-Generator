@@ -6,8 +6,9 @@ const fs = require('fs');
 function filterTeam(members) {
     teamArray = [];
     // create a function that returns the manager card
+
     members.forEach(element => {
-        if (element.getRole() === "Manger") {
+        if (element.getRole() === "Manager") {
             const manager = returnManager(element)
             teamArray.push(manager);
         }
@@ -26,8 +27,8 @@ function filterTeam(members) {
         return `
     <div class="card" style="width: 18rem;">
     <div class="card-body">
-    <h5 class="card-title p-4 mb-2 bg-primary text-white text-center">${Manager.name}</h5>
-    <h5 class="card-title">Manager</h5>
+    <h4 class="card-title p-4 mb-2 bg-primary text-white text-center">${Manager.name}</h4>
+    <h4 class="card-title">Manager</h4>
     <ul class="list-group list-group-flush">
     <li class="list-group-item">ID: ${Manager.id}</li>
     <li class="list-group-item">Email: ${Manager.email}</li>
@@ -44,8 +45,8 @@ function filterTeam(members) {
         return `
     <div class="card" style="width: 18rem;">
     <div class="card-body">
-    <h5 class="card-title p-4 mb-2 bg-primary text-white text-center">${Intern.name}</h5>
-    <h5 class="card-title">Intern</h5>
+    <h4 class="card-title p-4 mb-2 bg-primary text-white text-center">${Intern.name}</h4>
+    <h4 class="card-title">Intern</h4>
     <ul class="list-group list-group-flush">
     <li class="list-group-item">ID: ${Intern.id}</li>
     <li class="list-group-item">Email: ${Intern.email}</li>
@@ -60,22 +61,20 @@ function filterTeam(members) {
         return `
     <div class="card" style="width: 18rem;">
     <div class="card-body">
-    <h5 class="card-title p-4 mb-2 bg-primary text-white text-center">${Engineer.name}</h5>
-    <h5 class="card-title">Engineer</h5>
+    <h4 class="card-title p-4 mb-2 bg-primary text-white text-center">${Engineer.name}</h4>
+    <h4 class="card-title">Engineer</h4>
     <ul class="list-group list-group-flush">
     <li class="list-group-item">ID: ${Engineer.id}</li>
     <li class="list-group-item">Email: ${Engineer.email}</li>
-    <li class="list-group-item">Office Number: ${Engineer.getGitHub()}</li>
+    <li class="list-group-item">Github Username: ${Engineer.getGitHub()}</li>
   </ul>
   </div>
 </div>`
     }
-    console.log(teamArray)
     return teamArray;
 }
 
 module.exports = (members) => {
-    console.log(filterTeam(members).toString());
     return `
 <!doctype html>
 <html lang="en">
@@ -93,7 +92,7 @@ module.exports = (members) => {
         <h2>My Team</h2>
     </header>
     <main>
-        <div id="card-container">
+        <div class="d-flex flex-wrap justify-content-evenly" id="card-container">
         ${filterTeam(members).toString()}
         </div>
     </main>
